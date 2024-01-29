@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500;600&display=swap");
+
+
+body{
+    background-color: #f5f5f5;
+}
+
+h1{
+    color: forestgreen;
+    font-family: 'Poppins',sans-serif;
+ }
+
+ h1:hover{
+    opacity: 0.5;
+ }
+
+ .initial {
+    background-color: lightgray;
+    border-radius: 25px;
+    padding: 10px; /* Adds padding inside the elements */
+    width: auto; /* Adjust the width as needed */
+    max-width: 30%; /* Ensures the element does not overflow its container */
+    word-break: break-word; /* Ensures long words do not overflow */
+    margin-bottom:5px; /* Adds space between the elements */
+    font-family: 'Poppins',sans-serif;
+}
+
+
+
+header{
+ 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:fit-content;
+}
+
+.wrapper{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    background-color: #f5f5f5;
+}
+
+
+
+
+.chat-container {
+    width: 800px;
+    height: 600px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    
+}
+
+.chat-box {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ddd;
+    height:100px;
+}
+
+.chat-input {
+    border: none;
+    padding: 5px; /* Reduced padding */
+    height: 5px;  /* Set a specific height */
+    border-radius: 0 0 0 8px;
+    flex-grow: 1;
+    border-right: 1px solid #ddd;
+    word-break: break-word;
+}
+
+.send-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 0 0 8px 0;
+    cursor: pointer;
+}
+
+.send-button:hover {
+    background-color: #45a049;
+}
+
+.chat-input:focus, .send-button:focus {
+    outline: none;
+}
+
+.custom {
+    background-color: lightgreen;
+    border-radius: 25px;
+    padding: 10px; /* Adds padding inside the elements */
+    width: auto; /* Adjust the width as needed */
+    max-width: 30%; /* Ensures the element does not overflow its container */
+    word-break: break-word; /* Ensures long words do not overflow */
+    margin-bottom: 5px; /* Adds space between the elements */
+    margin-left: 80%;
+    font-family: 'Poppins',sans-serif;
+}
+
+

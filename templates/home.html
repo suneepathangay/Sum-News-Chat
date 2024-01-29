@@ -29,9 +29,11 @@
 
                     <p>Sum News is a tool that utilises an NLP algorithm to summarize long articles and extract the information that you need</p>
 
-                    <p>Currently developing an audio module to fruther boost time efficiency</p>
+                    <p>We have just added a chatbot update to interact with articles</p>
 
                     <button onclick="window.location='{{ url_for('get_dash') }}'">Get Started</button>
+
+                    <button onclick="goChat()">Go Chat</button>
                 </div>
 
             </div>
@@ -50,8 +52,20 @@
 
 
         </footer>
+
+       
         
      </div>
+
+    
     
     </body>
+
+
+    <script>
+        function goChat(){
+            window.location.href="/chat"
+        }
+
+    </script>
 </html>

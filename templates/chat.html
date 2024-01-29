@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SumNews</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/chat.css') }}">
+        
+          </head>
+       
+    </head>
+        
+
+        <body>
+        <h1 onclick="goHome()">Sum News</h1>
+            <div class="wrapper">
+            <div class="chat-container">
+                <div class="chat-box" id="chatBox">
+              
+                <p class="initial">Welcome</p>
+
+                <p class="initial">Please enter in your article to being chatting</p>
+            </div>
+            <textarea id="userInput" class="chat-input" placeholder="Paste your article and begin conversation..."></textarea>
+
+            <button onclick="submitText()" id="sendButton" class="send-button">Send</button>
+        </div>
+    </div>
+    
+    </body>
+
+     <script>
+
+        //declare an array of charset
+        let chats = [];
+        localStorage.setItem("chats",JSON.stringify(chats));
+
+        let seenChats=[];
+        localStorage.setItem("seenchats",JSON.stringify(seenChats));
+
+        
+        
+        
+
+
+       async function submitText(){
+            let textArea=document.getElementById("userInput");
+            let text=textArea.value;
+
+            let usrObj={"user":"human","text":text, display:false}
+            addTexts(usrObj);
+            localStorage.setItem("chats", JSON.stringify(chats));
+            
+            generateTexts();
+            console.log(localStorage.getItem("chats"));
+
+            let textarea=document.getElementById("userInput");
+
+
+            textArea.value=null;
+
+            const url="/chat-text";
+
+            const data={text:text};
+
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json', 
+                },
+                body: JSON.stringify(data),
+            });
+            console.log(response.json()['result']);
+
+            
+            
+        }
+
+
+        function addTexts(obj){
+            chats.push(obj);
+        }
+
+    
+
+        function generateTexts(){
+            let chatHistory=JSON.parse(localStorage.getItem("chats"));
+            let chatSene=JSON.parse(localStorage.getItem("seenchats"));
+
+            for(let j=0; j < chatHistory.length; j++){
+                let obj=chatHistory[j];
+                
+                if(!chatSene.includes(obj.text)){
+                    let newElement = document.createElement("p");
+                    newElement.textContent = obj.text;
+
+                    if(obj.user==="human"){
+                        newElement.className+="custom";
+                    }
+
+                    let parentElement = document.getElementById("chatBox");
+                    parentElement.appendChild(newElement);
+                    
+                }
+                chatSene.push(obj.text);
+                localStorage.setItem("seenchats",JSON.stringify(chatSene));
+                
+
+            }
+        }
+
+        function goHome(){
+            window.location.href="/"
+        }
+
+     </script>
+
+      
+    
+</html>

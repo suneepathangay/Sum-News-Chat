@@ -2,12 +2,14 @@
 from flask import Flask, jsonify, render_template, request
 from flask_cors import CORS, cross_origin
 from algo import return_summary
-
+import os
+from chatbot.chat import send_text_bot,chat_with_bot
 
 ##server for flask app
 #deploy the app
 
 app = Flask(__name__)
+app.config['PINECONE_API_KEY']=os.environ.get('PINECONE_API_KEY')
 CORS(app, resources={r"*": {"origins": "*", "supports_credentials": True}})
 
 
@@ -41,17 +43,29 @@ def process_text():
     
     return response
 
-# @app.route('/dummy',methods=["GET","POST"])
-# def dummy():
-#     data=request.get_json()
-#     response = data['text']
-    
-#     response.headers.add("Access-Control-Allow-Origin", "*")
-#     response.headers.add("Access-Control-Allow-Headers", "Content-Type")
-#     response.headers.add("Access-Control-Allow-Methods", "POST")
-    
-#     return response
+@app.route('/chat',methods=["GET"])
+def chat():
+    return render_template('chat.html')
 
+
+@app.route('/chat-text',methods=["POST"])
+def send_text():
+    result=None
+    text=request.get_json()
+    text=text['text']
+    if len(text.split(" ")) >= 50:
+        send_text_bot(text)
+        result="Text successfully uploaded"
+    else:
+        result=chat_with_bot(text)
+        
+    
+    response=jsonify({"result":result})
+    response.headers.add("Access-Control-Allow-Origin", "http://192.168.68.62:5000")
+    response.headers.add("Access-Control-Allow-Headers", "Content-Type")
+    response.headers.add("Access-Control-Allow-Methods", "POST")
+    
+    return response
 
 if( __name__ =='__main__'):
-    app.run(host="0.0.0.0",port=5000)
+    app.run(host="0.0.0.0",port=5000,debug=True)
