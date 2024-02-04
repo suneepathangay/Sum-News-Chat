@@ -18,26 +18,11 @@ Sum News introduces a series of functionalities aimed at enhancing user engageme
 
 The Sum News application is built upon a robust stack of technologies, chosen for their performance, scalability, and relevance to the project's objectives:
 
-- **Python**: The primary programming language, selected for its extensive libraries and community support in data processing and machine learning.
-- **Flask**: Employed as the web framework to facilitate server-side operations and client interactions in a lightweight, efficient manner.
-- **TensorFlow**: Utilized for its powerful machine learning models, specifically for embedding textual content into vectors.
-- **Hugging Face**: Integrated for its state-of-the-art natural language processing tools and models.
-- **Langchain**: A toolkit for building and deploying language models, crucial for the development of the chatbot feature.
-- **Pinecone**: A vector database that serves as the backbone for storing and querying vectorized text, ensuring fast and accurate retrieval of information.
+- **Python**
+- **Flask**
+- **TensorFlow**
+- **Hugging Face**
+- **Langchain**
+- **Pinecone**
 
-## Getting Involved
 
-Contributions to the Sum News project are highly encouraged, whether in the form of code improvements, feature suggestions, or bug reports. To contribute, please follow these steps:
-
-1. **Clone the Repository**: Obtain a local copy of the project to explore its contents and functionality.
-2. **Install Dependencies**: Ensure all required libraries and frameworks are installed via `pip install -r requirements.txt`.
-3. **Launch the Application**: Initiate the Flask application using `flask run` to start the development server on your local machine.
-4. **Engage with the Project**: Explore the application's features, identify areas for improvement, and consider how you might contribute to its development.
-
-## Conclusion
-
-The Sum News application embodies our commitment to leveraging cutting-edge technology to address real-world challenges. By combining automated summarization with interactive exploration, we aim to offer a novel approach to news consumption. We invite fellow students, developers, and enthusiasts to join us in refining and expanding this project, fostering a community of innovation and collaboration.
-
-## License
-
-The Sum News project is made available under the MIT License, supporting open collaboration and contribution. For full license details, please refer to the LICENSE file in the repository.
