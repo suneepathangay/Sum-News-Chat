@@ -26,6 +26,14 @@ h1{
     font-family: 'Poppins',sans-serif;
 }
 
+.heading-wrap{
+    padding: 1%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
 
 
 header{
@@ -39,12 +47,19 @@ header{
 .wrapper{
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh; 
     background-color: #f5f5f5;
+    flex-direction: column;
+}
+
+.heading{
+    padding: 5%;
+    font-size: x-large;
+
 }
 
 
@@ -66,18 +81,19 @@ header{
     padding: 20px;
     overflow-y: auto;
     border-bottom: 1px solid #ddd;
-    height:100px;
+    height:400px;
 }
 
 .chat-input {
     border: none;
     padding: 5px; /* Reduced padding */
-    height: 5px;  /* Set a specific height */
+    min-height: 50px;  /* Ensure it doesn't get too small */
     border-radius: 0 0 0 8px;
-    flex-grow: 1;
+    flex-grow: 0; /* Prevents the input from growing and taking unnecessary space */
     border-right: 1px solid #ddd;
     word-break: break-word;
 }
+
 
 .send-button {
     background-color: #4CAF50;
