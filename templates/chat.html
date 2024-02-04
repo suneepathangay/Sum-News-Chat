@@ -72,11 +72,19 @@
             });
             
             const results= await response.json();
-            console.log(results["result"])
-
+            const messages=results["result"];
+            let chatObj={"user":"chat","text":messages, display:false}
+            
+            addTexts(chatObj);
+            localStorage.setItem("chats", JSON.stringify(chats));
+            
+            generateTexts();
+            console.log(localStorage.getItem("chats"));
             
             
         }
+
+       
 
 
         function addTexts(obj){
@@ -99,6 +107,11 @@
                     if(obj.user==="human"){
                         newElement.className+="custom";
                     }
+
+                    if(obj.user==="chat"){
+                        newElement.className+="initial";
+                    }
+
 
                     let parentElement = document.getElementById("chatBox");
                     parentElement.appendChild(newElement);

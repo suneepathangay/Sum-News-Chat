@@ -10,4 +10,6 @@ cookies = sign.login()
 
 chatbot = hugchat.ChatBot(cookies=cookies.get_dict()) 
 query_result = chatbot.query("Tell me about yourself!")
-print(query_result)
+
+result=str(query_result)
+print(result)

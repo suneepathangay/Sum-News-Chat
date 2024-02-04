@@ -160,7 +160,7 @@ def chat_with_bot(query):
     chatbot = hugchat.ChatBot(cookies=cookies.get_dict()) 
     query_result = chatbot.query(p)
     
-    return query_result
+    return str(query_result)
 
 
 
