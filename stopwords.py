@@ -1,5 +1,6 @@
 import string
 
+#
 
 def get_stopwords():
     with open('stopwords.txt', 'r') as file:
