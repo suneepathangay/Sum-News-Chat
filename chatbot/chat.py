@@ -8,6 +8,8 @@ import numpy as np
 from langchain.prompts import PromptTemplate
 import replicate
 import subprocess
+from hugchat import hugchat
+from hugchat.login import Login
 
 
 def execute():
@@ -62,6 +64,7 @@ def send_text_bot(text):
     chunk_embeddings=np.array(chunk_embeddings)
     ids=np.array(ids)
     sentence_chunks=np.array(sentence_chunks)
+    
     
 
 
@@ -147,25 +150,21 @@ def chat_with_bot(query):
     prompt=PromptTemplate(input_variables=["query", "text"],template=template)
 
     p=prompt.format(query=query,text=relevant_text)
+    
+    load_dotenv()
+    
+    sign = Login(os.getenv('HUGGING_FACE_USER'), os.getenv('HUGGING_FACE_PASS'))
+    
+    cookies = sign.login()
+
+    chatbot = hugchat.ChatBot(cookies=cookies.get_dict()) 
+    query_result = chatbot.query(p)
+    
+    return query_result
 
 
 
-    output = replicate.run(
-        "meta/llama-2-70b-chat:02e509c789964a7ea8736978a43525956ef40397be9033abf9fd2badfe68c9e3",
-        input={
-            "prompt": p
-        }
-        
-        
-    )
-
-    texts=[]
-
-    for text in output:
-        text=text.strip()
-        if text!='' or text!=' ' or text!="'":
-            texts.append(text)
-    return texts
+    
     ##break point for anotehr function
 
 #send_text_bot(text)

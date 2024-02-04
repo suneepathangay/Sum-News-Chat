@@ -70,7 +70,9 @@
                 },
                 body: JSON.stringify(data),
             });
-            console.log(response.json()['result']);
+            
+            const results= await response.json();
+            console.log(results["result"])
 
             
             

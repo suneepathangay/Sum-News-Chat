@@ -4,13 +4,15 @@ from flask_cors import CORS, cross_origin
 from algo import return_summary
 import os
 from chatbot.chat import send_text_bot,chat_with_bot
+import subprocess
+import os
 
 ##server for flask app
 #deploy the app
 
 app = Flask(__name__)
-app.config['PINECONE_API_KEY']=os.environ.get('PINECONE_API_KEY')
 CORS(app, resources={r"*": {"origins": "*", "supports_credentials": True}})
+os.environ["REPLICATE_API_TOKEN"] = "r8_3xeN30VMmlVslWSSjuQxwgwZXhfRpDA3xUIQU"
 
 
 @app.route('/')
@@ -50,6 +52,7 @@ def chat():
 
 @app.route('/chat-text',methods=["POST"])
 def send_text():
+    
     result=None
     text=request.get_json()
     text=text['text']
@@ -59,7 +62,7 @@ def send_text():
     else:
         result=chat_with_bot(text)
         
-    
+    print(result)
     response=jsonify({"result":result})
     response.headers.add("Access-Control-Allow-Origin", "http://192.168.68.62:5000")
     response.headers.add("Access-Control-Allow-Headers", "Content-Type")
